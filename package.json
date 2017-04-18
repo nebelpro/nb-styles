@@ -1,0 +1,25 @@
+{
+  "name": "nb-styles",
+  "version": "1.0.0",
+  "description": "style utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nebelpro/nb-styles.git"
+  },
+  "keywords": [
+    "style",
+    "utils",
+    "less",
+    "sass"
+  ],
+  "author": "nebel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nebelpro/nb-styles/issues"
+  },
+  "homepage": "https://github.com/nebelpro/nb-styles#readme"
+}
