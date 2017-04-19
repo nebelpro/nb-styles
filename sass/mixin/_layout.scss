@@ -1,0 +1,5 @@
+@mixin setLayoutPaddding($top,$right,$left) {
+  padding-top:$top;
+  padding-left: $left;
+  padding-right:$right;
+}

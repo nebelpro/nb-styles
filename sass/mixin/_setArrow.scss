@@ -1,0 +1,244 @@
+// css2 arrow
+@mixin arrow($borderWidth, $borderColor) {
+  @include setArrowWidth($borderWidth);
+  @include setArrowColor($borderColor);
+}
+
+@mixin setArrowColor($borderColor) {
+  &.arrow_t {
+    border-bottom-color: $borderColor;
+  }
+  &.arrow_r {
+    border-left-color: $borderColor;
+  }
+  &.arrow_b {
+    border-top-color: $borderColor;
+  }
+  &.arrow_l {
+    border-right-color: $borderColor;
+  }
+}
+
+@mixin setArrowWidth($borderWidth) {
+  border-width: $borderWidth;
+}
+
+@mixin setArrowTop($direction, $borderWidth, $borderColor) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: $borderWidth;
+  border-style: dashed;
+  border-color: transparent;
+
+  @include arrow_t($borderColor);
+}
+
+@mixin setArrowRight($borderWidth, $borderColor) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: $borderWidth;
+  border-style: dashed;
+  border-color: transparent;
+  @include arrow_r($borderColor);
+}
+
+@mixin setArrowBottom( $borderWidth, $borderColor) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: $borderWidth;
+  border-style: dashed;
+  border-color: transparent;
+  @include arrow_b($borderColor);
+}
+
+@mixin setArrowLeft( $borderWidth, $borderColor) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-width: $borderWidth;
+  border-style: dashed;
+  border-color: transparent;
+  @include arrow_l($borderColor);
+}
+
+@mixin arrow_t($c) {
+  border-top-width: 0;
+  border-bottom-color: $c;
+  border-bottom-style: solid;
+}
+
+@mixin arrow_r($c) {
+  border-right-width: 0;
+  border-left-color: $c;
+  border-left-style: solid;
+}
+
+@mixin arrow_b($c) {
+  border-bottom-width: 0;
+  border-top-color: $c;
+  border-top-style: solid;
+}
+
+@mixin arrow_l($c) {
+  border-left-width: 0;
+  border-right-color: $c;
+  border-right-style: solid;
+}
+
+// css3 arrow
+@mixin setArrowWidth_Wap($borderWidth) {
+  border-width: $borderWidth $borderWidth 0 0;
+}
+
+@mixin setArrowSize_Wap($arrowsize) {
+  height: $arrowsize;
+  width: $arrowsize;
+}
+
+@mixin setArrow_WapTop($direction, $arrowsize, $borderColor,$borderWidth) {
+  display: inline-block;
+  transform:translate(0, 0) rotate(- 45 deg);
+  @include setArrowSize_Wap($arrowsize);
+  @include setArrowWidth_Wap($borderWidth);
+  border-color: $borderColor;
+  border-style: solid;
+}
+
+@mixin setArrow_WapRight($direction, $arrowsize, $borderColor,$borderWidth) {
+  display: inline-block;
+  transform: rotate(45deg);
+  @include setArrowSize_Wap($arrowsize);
+  @include setArrowWidth_Wap($borderWidth);
+  border-color: $borderColor;
+  border-style: solid;
+  position: relative;
+  top: -2px;
+}
+
+@mixin setArrow_WapDown($direction, $arrowsize, $borderColor,$borderWidth) {
+  display: inline-block;
+  transform: rotate(135deg);
+  @include setArrowSize_Wap($arrowsize);
+  @include setArrowWidth_Wap($borderWidth);
+  border-color: $borderColor;
+  border-style: solid;
+
+  position: relative;
+  top: -3px;
+}
+
+@mixin setArrow_WapLeft($direction, $arrowsize, $borderColor,$borderWidth) {
+  display: inline-block;
+  transform: rotate(-135deg);
+  @include setArrowSize_Wap($arrowsize);
+  @include setArrowWidth_Wap($borderWidth);
+  border-color: $borderColor;
+  border-style: solid;
+
+  position: relative;
+  top: -2px;
+}
+
+
+
+//////////////////////////////
+@mixin solidArrow($direction,
+$size,
+$color) {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+  border-width: $size;
+  cursor: pointer;
+  @if $direction == top {
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent $color transparent;
+    border-top: none;
+  }
+  @else if $direction == bottom {
+    border-style: solid dashed dashed dashed;
+    border-color: $color transparent transparent transparent;
+    border-bottom: none;
+  }
+  @else if $direction == right {
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent $color;
+    border-right: none;
+  }
+  @else if $direction == left {
+    border-style: dashed solid dashed dashed;
+    border-color: transparent $color transparent transparent;
+    border-left: none;
+  }
+}
+
+@mixin  borderArrow($size,$borderSize,$borderColor : #e3e3e3,$direction : right){
+
+
+
+  @if $direction == top {
+    transform: rotate(315deg);
+  }
+  @else if $direction == right {
+    transform: rotate(45deg);
+  }
+  @else if $direction == bottom {
+    transform: rotate(135deg);
+  }
+  @else if $direction == left {
+    transform: rotate(225deg);
+  }
+
+
+  height: $size;
+  width: $size;
+  border-width: $borderSize $borderSize 0 0;
+  border-color: $borderColor;
+  border-style: solid;
+}
+@mixin  borderArrowVertiMiddle($size,$borderSize){
+
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  margin-top: -(($size+$borderSize)/2);
+}
+
+
+@mixin attachArrowRight($size,$borderSize,$borderColor){
+
+  position: relative;
+  &:after{
+    content:" ";
+    @include borderArrow($size,$borderSize,$borderColor,right);
+    @include borderArrowVertiMiddle($size,$borderSize);
+
+  }
+}
+
+@mixin attachArrowBottom($size,$borderSize,$borderColor){
+
+  position: relative;
+  &:after{
+    content:" ";
+    @include borderArrow($size,$borderSize,$borderColor,bottom);
+    @include borderArrowVertiMiddle($size,$borderSize);
+
+  }
+}
+
+@mixin attachArrowTop($size,$borderSize,$borderColor){
+
+  position: relative;
+  &:after{
+    content:" ";
+    @include borderArrow($size,$borderSize,$borderColor,top);
+    @include borderArrowVertiMiddle($size,$borderSize);
+
+  }
+}
