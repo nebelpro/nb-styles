@@ -1,7 +1,7 @@
 // ===== REM UNIT MIXINS ====
 
 // todo: 如何将这里的配置,变更成从项目中读取
-@base-font-size-px: 37.5; // root's font size. @base-font-size-px MUST BE AN INTEGER.
+//@base-font-size-px: 37.5; // root's font size. @base-font-size-px MUST BE AN INTEGER.
 
 @pxtorem-js-function: ~`pxtorem = function(px){ if (typeof rmxsBaseFontSize == 'undefined')  rmxsBaseFontSize = @{base-font-size-px}; return (parseInt(px.replace(/(^\d+)(.+$)/i,'$1')) / rmxsBaseFontSize + 'rem') }`;
 
