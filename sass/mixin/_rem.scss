@@ -1,4 +1,4 @@
-@mixin px2rem($property,$px-values,$baseline-px:32px,$support-for-ie:false){
+@mixin px2rem($property,$px-values,$baseline-px:37.5px,$support-for-ie:false){
   //Conver the baseline into rems
   $baseline-rem: $baseline-px / 1rem * 1;
   //Print the first line in pixel values
