@@ -1,0 +1,66 @@
+font-dpr(size) {
+  font-size: size;
+
+  [data-dpr="2"] & {
+    font-size: (size * 2);
+  }
+
+  [data-dpr="3"] & {
+    font-size: (size * 3);
+  }
+}
+
+border-dpr-func(prop, size, style, color) {
+  {prop}: size style color;
+
+  [data-dpr="2"] & {
+    {prop}: (size * 2) style color;
+  }
+
+  [data-dpr="3"] & {
+    {prop}: (size * 3) style color;
+  }
+}
+
+border-radius-func(prop, size) {
+  {prop}: size;
+
+  [data-dpr="2"] & {
+    {prop}: (size * 2);
+  }
+
+  [data-dpr="3"] & {
+    {prop}: (size * 3);
+  }
+}
+
+border-dpr(size, style, color)
+  border-dpr-func('border', size, style, color);
+
+border-top-dpr(size, style, color)
+  border-dpr-func('border-top', size, style, color)
+
+border-right-dpr(size, style, color)
+  border-dpr-func('border-right', size, style, color)
+
+border-bottom-dpr(size, style, color)
+  border-dpr-func('border-bottom', size, style, color)
+
+border-left-dpr(size, style, color)
+  border-dpr-func('border-left', size, style, color)
+
+border-radius-dpr(size)
+  border-radius-func('border-radius', size)
+
+border-top-left-radius-dpr(size)
+  border-radius-func('border-top-left-radius', size)
+
+border-top-right-radius-dpr(size)
+  border-radius-func('border-top-right-radius', size)
+
+border-bottom-left-radius-dpr(size)
+  border-radius-func('border-bottom-left-radius', size)
+
+border-bottom-right-radius-dpr(size)
+  border-radius-func('border-bottom-right-radius', size)
+
